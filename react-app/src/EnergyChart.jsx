@@ -1,41 +1,101 @@
 import React, { Component, PropTypes } from 'react'
-import * as d3 from "d3";
 import { Line } from 'react-chartjs-2';
 
 
-const data = {
-    labels: ['song1', 'song2', 'song3', 'song4', 'song5', 'song6', 'song7', 'song1', 'song2', 'song3', 'song4', 'song5', 'song6', 'song7'],
-    datasets: [
-        {
-            label: 'Energy of songs',
-            backgroundColor: 'red',
-            borderColor: 'black',
-            borderWidth: 1,
-            hoverBackgroundColor: 'rgba(255,99,132red0.4)',
-            hoverBorderColor: 'rgba(255,99,132,1)',
-            data: [.53, .4, .13, .12, .3, .9, .4, .53, .4, .13, .12, .3, .9, .4]
-        }
-    ]
 
-};
 
 class EnergyChart extends Component {
     constructor() {
-        super()
+        super();
+        this.state = {
+            songs: [],
+            energy: [],
+            danceability: []
+        }
     }
 
+    componentDidMount() {
+        fetch("http://127.0.0.1:8000")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        songs: result.songs,
+                        energy: result.energy,
+                        danceability: result.danceability
+                    });
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    console.log("ERROR")
+                }
+            )
+    }
+
+    generateEnergyData() {
+        const data = {
+            labels: this.state.songs,
+            datasets: [
+                {
+                    label: 'Energy of songs',
+                    backgroundColor: '#8SE582',
+                    borderColor: ' #223237',
+                    borderWidth: 1,
+                    hoverBackgroundColor: 'rgba(255,99,132red0.4)',
+                    hoverBorderColor: 'rgba(255,99,132,1)',
+                    pointHitRadius: 10,
+                    data: this.state.energy
+                }
+            ]
+        };
+        return data
+    }
+
+    generateDanceData() {
+        const data = {
+            labels: this.state.songs,
+            datasets: [
+                {
+                    label: 'Danceability of songs',
+                    backgroundColor: '#FF3B3F',
+                    borderColor: ' #223237',
+                    borderWidth: 1,
+                    hoverBackgroundColor: 'rgba(255,99,132red0.4)',
+                    hoverBorderColor: 'rgba(255,99,132,1)',
+                    pointHitRadius: 10,
+                    data: this.state.danceability
+                }
+            ]
+        };
+        return data
+    }
 
     render() {
         return (
             <div>
                 <Line
-                    data={data}
-                    width={60}
-                    height={500}
+                    data={this.generateEnergyData()}
+                    width={30}
+                    height={35}
                     options={{
+                        layout: {
+                            padding: {
+                                left: 100,
+                                right: 100,
+                                top: 15,
+                                bottom: 0
+                            }
+                        },
+                        animation: {
+                            easing: 'easeInBounce'
+                        },
+                        
                         maintainAspectRatio: false,
                         scales: {
                             xAxes: [{
+                                display: false, 
                                 gridLines: {
                                     display: false
                                 }
@@ -47,10 +107,43 @@ class EnergyChart extends Component {
                             }]
                         }
                     }
-
                     }
                 />
+
+                <Line
+                    data={this.generateDanceData()}
+                    width={30}
+                    height={35}
+                    options={{
+                        layout: {
+                            padding: {
+                                left: 100,
+                                right: 100,
+                                top: 15,
+                                bottom: 0
+                            }
+                        },
+                
+                        maintainAspectRatio: false,
+                        scales: {
+                            xAxes: [{
+                                display: false,
+                                gridLines: {
+                                    display: false
+                                }
+                            }],
+                            yAxes: [{
+                                gridLines: {
+                                    display: false
+                                }
+                            }]
+                        }
+                    }
+                    }
+                />
+
             </div>
+
         )
     }
 }

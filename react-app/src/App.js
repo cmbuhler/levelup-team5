@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import TitleComponent from './TitleComponent';
 import EnergyChart from './EnergyChart';
+import Search from './Search';
 
 class App extends Component {
   render() {

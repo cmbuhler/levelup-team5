@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-
+import './TitleComponent.css'
 
 class TitleComponent extends Component {
     constructor() {
@@ -13,13 +13,10 @@ class TitleComponent extends Component {
     render() {
         return (
             <div>
-                <p>The Lord of the Rings: Fellowship of the Ring</p>
+                <p className = "text">Song Intensities for: The Lord of the Rings: Fellowship of the Ring</p>
             </div>
         )
     }
-
-
-
 }
 
 
