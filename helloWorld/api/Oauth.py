@@ -1,32 +1,36 @@
 import requests
-import json
-
-
+import  base64
+import json 
 ##fxn takes client key, secrent key, the token, and api url 
 ## 
 
 # https://developer.byu.edu/docs/consume-api/use-api/oauth-20/oauth-20-python-sample-code
+# urlRequest = "https://api.spotify.com/v1/albums/04rz93AqGy9JduzV3K81Dh/tracks"
+
+
+client = "41af0e72781d46a0a52fac7f3860d7f0"
+secret = "6b888f52bd224b9891fef6c35f178b5f"
+api_URL = "https://accounts.spotify.com/api/token"
+
+
+
+# def main():
+# 	grant_type = 'client_credentials'
+
+# 	body_params = {'grant_type' : grant_type}
+
+# 	# AUTH.
+# 	response=requests.post(api_URL, data=body_params, auth = (client, secret)) 
+# 	print(response.json())
+
+
 
 class Oauth():
-	def request(client, secret, token, api):
-		keys = {'grant_type': 'client_credentials'}
-		response = requests.post(token,data=data,verify=False, allow_redirects=False,auth=(client, secret) )
-
-		#getting response code 
-		resonse_token = json.loads(response.text)
-		return resonse_token
-		# printing token as an exmple
-		# print(tokens['access_token'])
-
-
-
-
-
-#extra stuff from the website
-# api_call_headers = {'Authorization': 'Bearer ' + tokens['access_token']}
-# api_call_response = requests.get(test_api_url, headers=api_call_headers, verify=False)
-
-# print api_call_response.text
-
-
+	def getToken(self):
+		grant_type = 'client_credentials'
+		body_params = {'grant_type' : grant_type}
+		# AUTH.
+		response=requests.post(api_URL, data=body_params, auth = (client, secret)) 
+		# print(response.json())
+		return response.json()
 
