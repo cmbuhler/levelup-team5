@@ -1,14 +1,13 @@
 from api.models import Note
 from rest_framework import viewsets
 from api.serializers import NoteSerializer
-import textwrap
 
 from django.http import JsonResponse
 from django.views.generic.base import View
 import requests
 import json
 
-# Create your views here.
+# Create youdr views here.
 class NoteViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows notes to be viewed or edited
