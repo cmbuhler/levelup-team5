@@ -91,7 +91,7 @@ class EnergyChart extends Component {
                         animation: {
                             easing: 'easeInBounce'
                         },
-                        
+                        responsive: true, 
                         maintainAspectRatio: false,
                         scales: {
                             xAxes: [{
@@ -123,7 +123,7 @@ class EnergyChart extends Component {
                                 bottom: 0
                             }
                         },
-                
+                        responsive: true,
                         maintainAspectRatio: false,
                         scales: {
                             xAxes: [{
