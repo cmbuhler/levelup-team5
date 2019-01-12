@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TitleComponent from './TitleComponent';
-import D3EnergyChart from './D3EnergyChart';
+import EnergyChart from './EnergyChart';
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
         <header className="App-header">
         <TitleComponent/>
         </header>
-        <D3EnergyChart/>
+        <EnergyChart/>
       </div>
     );
   }
