@@ -32,5 +32,5 @@ class Oauth():
 		# AUTH.
 		response=requests.post(api_URL, data=body_params, auth = (client, secret)) 
 		# print(response.json())
-		return response.json()
+		return response.json()["access_token"]
 

@@ -1,3 +1,5 @@
+from api.Oauth import Oauth
+
 from api.models import Note
 from rest_framework import viewsets
 from api.serializers import NoteSerializer
@@ -17,29 +19,39 @@ class NoteViewSet(viewsets.ModelViewSet):
 
 class HomePageView(View):
     def dispatch(request, *args, **kwargs):
+        result = {}
+        auth = Oauth()
         urlRequest = "https://api.spotify.com/v1/albums/04rz93AqGy9JduzV3K81Dh/tracks"
         r = requests.get(urlRequest, headers={
-            "Authorization": "Bearer BQB2s1sWABJubX3eNdfPlAxupI2UnVY20RZ1yloBHygEMyE2HoB8KzJ3LS3eb_Efh5w3eqigBe7SyL1UCeKyl39n5KVxfSUEkZrKDslBcOcsxv8j8HjL8Cbm_vLvOpeMGtL9Rie8klI0ccukyPRZdGruhXyFX1-4vZkFww"})
+            "Authorization": "Bearer " + auth.getToken()})
         resp_dict = r.json()
-        return JsonResponse(resp_dict)
+        # return JsonResponse(resp_dict)
+        
 
-        # itemarr = resp_dict["items"]
-        # songs = []
-        # idreq = []
-        # for item in itemarr:
-        #     songs.append(item["name"])
-        #     idreq.append(item["id"])
-        # urlRequest2 = "https://api.spotify.com/v1/audio-features?ids="
-        # id_string = ",".join(idreq)
-        # r2 = requests.get(urlRequest2 + id_string, headers={
-        #     "Authorization": "Bearer BQB2s1sWABJubX3eNdfPlAxupI2UnVY20RZ1yloBHygEMyE2HoB8KzJ3LS3eb_Efh5w3eqigBe7SyL1UCeKyl39n5KVxfSUEkZrKDslBcOcsxv8j8HjL8Cbm_vLvOpeMGtL9Rie8klI0ccukyPRZdGruhXyFX1-4vZkFww"})
-        # resp_dict2 = r2.json()
-        #
-        # energyarr = []
-        # featurearr = resp_dict2["audio_features"]
-        # for item in featurearr:
-        #     energyarr.append(item["energy"])
-        # print(energyarr)
+        itemarr = resp_dict["items"]
+        songs = []
+        idreq = []
+        for item in itemarr:
+            songs.append(item["name"])
+            idreq.append(item["id"])
+        urlRequest2 = "https://api.spotify.com/v1/audio-features?ids="
+        id_string = ",".join(idreq)
+        r2 = requests.get(urlRequest2 + id_string, headers={
+            "Authorization": "Bearer " + auth.getToken()})
+        resp_dict2 = r2.json()
+        
+        energy = []
+        danceability = []
+        featurearr = resp_dict2["audio_features"]
+        for item in featurearr:
+            energy.append(item["energy"])
+            danceability.append(item["danceability"])
+        print(energy)
+
+        result["songs"] = songs
+        result["energy"] = energy
+        result["danceability"] = danceability
+        return JsonResponse(result)
         #
         # song_string = ", ".join(songs)
         # response_text = textwrap.dedent('''\
