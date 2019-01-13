@@ -13,7 +13,8 @@ class TitleComponent extends Component {
     render() {
         return (
             <div>
-                <p className = "text">Song Intensities for: The Lord of the Rings: Fellowship of the Ring</p>
+                <p className = "text">Song Intensities</p>
+                <p className = "text">Harry Potter and the Sorcerer's Stone</p>
             </div>
         )
     }

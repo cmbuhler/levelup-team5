@@ -65,7 +65,7 @@ class HomePageView(View):
     def dispatch(request, *args, **kwargs):
         result = {}
         auth = Oauth()
-        urlRequest = "https://api.spotify.com/v1/albums/04rz93AqGy9JduzV3K81Dh/tracks"
+        urlRequest = "https://api.spotify.com/v1/albums/6zeHM5CV0CjcS0K8ouWE4N/tracks"
         r = requests.get(urlRequest, headers={
             "Authorization": "Bearer " + auth.getToken()})
         resp_dict = r.json()
