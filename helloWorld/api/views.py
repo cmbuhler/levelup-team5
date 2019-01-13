@@ -71,15 +71,18 @@ def MovieView(request):
     # print(resp_dict2) 
     energy = []
     danceability = []
+    happiness = []
     featurearr = resp_dict2["audio_features"]
     for item in featurearr:
         energy.append(item["energy"])
         danceability.append(item["danceability"])
+        happiness.append(item["valence"])
     print(energy)
 
     result["songs"] = songs
     result["energy"] = energy
     result["danceability"] = danceability
+    result["happiness"] = happiness
     return JsonResponse(result)
 
 

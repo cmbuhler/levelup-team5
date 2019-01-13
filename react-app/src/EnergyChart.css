@@ -1,4 +1,11 @@
-.charts{
+/* .charts{
     height: 400px;
-    width: 95%;
+    width: 100%;
+    display: inline-block;
+} */
+
+img {
+    max-width: 50%;
+    max-height: 50%;
+    margin: auto;
 }

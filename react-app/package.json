@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap-css-only": "^4.2.1",
     "chart.js": "^2.7.3",
     "d3": "^5.7.0",
     "react": "^16.7.0",
