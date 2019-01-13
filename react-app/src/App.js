@@ -15,7 +15,7 @@ class App extends Component {
         {/* <p className = "text">Song Intensities</p> */}
         <div className="container"> <HeaderComponent/></div>
         <div className="container">
-          <div className="row">
+          <div className="row justify-content-around">
           <MovieCard/>
           <MovieCard/>
           </div>

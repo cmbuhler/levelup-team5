@@ -5,7 +5,7 @@ import './MovieCard.css'
 class MovieClass extends React.Component{
     render() {
         return (
-            <div className="movieCard col-lg-6">
+            <div className="movieCard col-lg-5">
                 <br/>
                 <EnergyChart />
             </div>

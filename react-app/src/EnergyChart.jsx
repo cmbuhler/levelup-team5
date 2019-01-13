@@ -49,12 +49,12 @@ class EnergyChart extends Component {
             datasets: [
                 {
                     label: 'Energy of songs',
-                    backgroundColor: '#8SE582',
-                    borderColor: ' #223237',
+                    backgroundColor: '#ff3f7f',
+                    borderColor: '#db2b66',
                     borderWidth: 1,
                     hoverBackgroundColor: 'rgba(255,99,132red0.4)',
                     hoverBorderColor: 'rgba(255,99,132,1)',
-                    pointHitRadius: 10,
+                    pointHitRadius: 1,
                     data: this.state.energy
                 }
             ]
@@ -68,8 +68,8 @@ class EnergyChart extends Component {
             datasets: [
                 {
                     label: "Mood of song",
-                    backgroundColor: 'green',
-                    borderColor: ' #223237',
+                    backgroundColor: '#ff954f',
+                    borderColor: '#e56e20',
                     borderWidth: 1,
                     hoverBackgroundColor: 'rgba(255,99,132red0.4)',
                     hoverBorderColor: 'rgba(255,99,132,1)',
@@ -87,8 +87,8 @@ class EnergyChart extends Component {
             datasets: [
                 {
                     label: 'Danceability of songs',
-                    backgroundColor: '#FF3B3F',
-                    borderColor: ' #223237',
+                    backgroundColor: '#2fcee0',
+                    borderColor: '#1a7984',
                     borderWidth: 1,
                     hoverBackgroundColor: 'rgba(255,99,132red0.4)',
                     hoverBorderColor: 'rgba(255,99,132,1)',
@@ -125,11 +125,18 @@ class EnergyChart extends Component {
                 </h2>
                 <img src={this.state.image}/>
                 <br/>
+                <br/>
 
                 <div className="charts">
                     <Line
                         data={this.generateEnergyData()}
                         options={{
+                            legend: {
+                                labels: {
+                                    fontColor: "white",
+                                    fontSize: 14
+                                }
+                            },
                             scales: {
                                 xAxes: [{
                                     display: false,
@@ -142,6 +149,8 @@ class EnergyChart extends Component {
                                         display: false
                                     },
                                     ticks: {
+                                        fontColor: "white",
+                                        fontSize: 14,
                                         suggestedMin: 0,
                                         suggestedMax: 1,
                                     }
@@ -155,6 +164,12 @@ class EnergyChart extends Component {
                     <Line
                         data={this.generateDanceData()}
                         options={{
+                            legend: {
+                                labels: {
+                                    fontColor: "white",
+                                    fontSize: 14
+                                }
+                            },
                             scales: {
                                 xAxes: [{
                                     display: false,
@@ -167,6 +182,8 @@ class EnergyChart extends Component {
                                         display: false
                                     },
                                     ticks: {
+                                        fontColor: "white",
+                                        fontSize: 14,
                                         suggestedMin: 0,
                                         suggestedMax: 1,
                                     }
@@ -179,6 +196,12 @@ class EnergyChart extends Component {
                     <Line
                         data={this.generateHappinessData()}
                         options={{
+                            legend: {
+                                labels: {
+                                    fontColor: "white",
+                                    fontSize: 14
+                                }
+                            },
                             scales: {
                                 xAxes: [{
                                     display: false,
@@ -191,6 +214,8 @@ class EnergyChart extends Component {
                                         display: false
                                     },
                                     ticks: {
+                                        fontColor: "white",
+                                        fontSize: 14,
                                         suggestedMax: 1,
                                         suggestedMin: 0,
                                         callback: function(value) {

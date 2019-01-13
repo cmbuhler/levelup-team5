@@ -1,6 +1,5 @@
 .movieCard{
-    border: 1px solid grey; 
     border-radius: 5px;
-    background-color: lightgrey;
+    background-color: rgba(45, 94, 131, 0.445) !important;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px rgba(0,0,0, 0.19);
 }

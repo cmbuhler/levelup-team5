@@ -1,8 +1,6 @@
-/* .charts{
-    height: 400px;
-    width: 100%;
-    display: inline-block;
-} */
+.charts{
+    background-color: rgba(52, 109, 153, 0.445) !important;
+} 
 
 img {
     max-width: 50%;

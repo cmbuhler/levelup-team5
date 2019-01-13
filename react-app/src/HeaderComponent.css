@@ -1,12 +1,29 @@
+.container{
+    padding-bottom: 15px;
+}
+
 .header{
-    color: saddlebrown;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: snow;
+    font-family: "Lucida Sans Unicode";
     font-size: 96px;
+
 }
 
 .text {
-    color: saddlebrown;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: snow;
+    font-family: "Lucida Sans Unicode";
     font-size: 20px;
     opacity: 0.75;
+}
+
+#int {
+    color: snow;
+}
+
+#dance {
+    color: snow;
+}
+
+#mood {
+    color: snow;
 }
