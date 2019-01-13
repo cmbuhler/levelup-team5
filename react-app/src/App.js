@@ -18,6 +18,8 @@ class App extends Component {
           <MovieCard/>
           </div>
         </div>
+        <br/>
+        <br/>
       </div>
     );
   }
