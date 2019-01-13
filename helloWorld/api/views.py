@@ -8,6 +8,7 @@ from django.http import JsonResponse, HttpResponse
 from django.views.generic.base import View
 import requests
 import json
+import urllib
 
 # Create youdr views here.
 class NoteViewSet(viewsets.ModelViewSet):
@@ -20,21 +21,41 @@ class NoteViewSet(viewsets.ModelViewSet):
 
 def MovieView(request):
     movie = request.GET.get("movie")
-    
-    movid = "04rz93AqGy9JduzV3K81Dh"
-    if(movie.lower() == "lord of the rings: the fellowship of the ring"):
+    auth = Oauth()
+
+    queryDict = {
+        "q" : movie,
+        "type" : "album",
+        "limit" : "1"
+    }
+
+    queryString = urllib.parse.urlencode(queryDict)
+    searchRequest = "https://api.spotify.com/v1/search?" + queryString
+    searchResults = requests.get(searchRequest, headers={
+        "Authorization": "Bearer " + auth.getToken(),
+    })
+    searchResultsDict = searchResults.json()
+
+    movieRecord = searchResultsDict["albums"]["items"][0]
+    if movieRecord is None:
+        print("Can not find " + movie)
         movid = "04rz93AqGy9JduzV3K81Dh"
-    elif(movie.lower() == "harry potter"):
-        movid = "6zeHM5CV0CjcS0K8ouWE4N"
+        imageLink = ""
+        movName = "Lord Of The Rings: The Fellowship Of The Ring (Original Motion Picture Soundtrack)"
+    else:
+        movid = movieRecord["id"]
+        imageLink = movieRecord["images"][0]["url"]
+        movName = movieRecord["name"]
 
     result = {}
-    auth = Oauth()
+    result["name"] = movName
+    result["image"] = imageLink
+
+    
     urlRequest = "https://api.spotify.com/v1/albums/"+ movid +"/tracks"
     r = requests.get(urlRequest, headers={
         "Authorization": "Bearer " + auth.getToken()})
     resp_dict = r.json()
-    # return JsonResponse(resp_dict)
-        
 
     itemarr = resp_dict["items"]
     songs = []
@@ -46,7 +67,8 @@ def MovieView(request):
     id_string = ",".join(idreq)
     r2 = requests.get(urlRequest2 + id_string, headers={
         "Authorization": "Bearer " + auth.getToken()})
-    resp_dict2 = r2.json()    
+    resp_dict2 = r2.json()   
+    # print(resp_dict2) 
     energy = []
     danceability = []
     featurearr = resp_dict2["audio_features"]
