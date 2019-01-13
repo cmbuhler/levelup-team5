@@ -17,19 +17,18 @@ class HeaderComponent extends Component {
 
         	<div>
 
-                <h2 className = "text">
-                    Industria Elit
-
-                </h2>
+                <div className = "header">
+                    Industria Elite
+                </div >
                 
-	            // <h2 className = "text">
-	            //     <TextLoop springConfig={{ stiffness: 70, damping: 31 }}>
-	            //         <span className = "text">Song Intensities in:</span>
-	            //         <span span className = "text"> Song Danceability in:</span>
+	             <header className = "text">
+	                 <TextLoop springConfig={{ stiffness: 70, damping: 31 }}>
+	                     <span className = "text">Song Intensities in Movies</span>
+	                     <span span className = "text"> Song Danceability in Movies</span>
+                         <span span className = "text"> Song Mood in Movies</span>
 	                    
-	            //     </TextLoop>{" "}
-	            //     Harry Potter and the Sorcerer's Stone
-	            // </h2>
+	                 </TextLoop>{" "}
+	             </header>
             </div>
         )
     }
@@ -37,6 +36,6 @@ class HeaderComponent extends Component {
 
 
 
-export default TitleComponent
+export default HeaderComponent
 
 
