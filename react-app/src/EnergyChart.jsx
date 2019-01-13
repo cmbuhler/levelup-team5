@@ -191,8 +191,16 @@ class EnergyChart extends Component {
                                         display: false
                                     },
                                     ticks: {
-                                        suggestedMin: 0,
                                         suggestedMax: 1,
+                                        suggestedMin: 0,
+                                        callback: function(value) {
+                                            if (value == 0) {
+                                                return "Sad";
+                                            }
+                                            else if(value == 1.0) {
+                                                return "Happy";
+                                            }}
+
                                     }
                                 }]
                             }
