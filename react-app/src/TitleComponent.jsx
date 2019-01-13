@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import './TitleComponent.css'
+import TextLoop from "react-text-loop";
 
 class TitleComponent extends Component {
     constructor() {
@@ -12,9 +13,17 @@ class TitleComponent extends Component {
 
     render() {
         return (
-            <div>
-                <p className = "text">Song Intensities</p>
-                <p className = "text">Harry Potter and the Sorcerer's Stone</p>
+
+
+        	<div>
+	            <h2 className = "text">
+	                <TextLoop springConfig={{ stiffness: 70, damping: 31 }}>
+	                    <span className = "text">Song Intensities in:</span>
+	                    <span span className = "text"> Song Danceability in:</span>
+	                    
+	                </TextLoop>{" "}
+	                Harry Potter and the Sorcerer's Stone
+	            </h2>
             </div>
         )
     }
