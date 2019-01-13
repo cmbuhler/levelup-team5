@@ -1,4 +1,12 @@
-.text{
+.header{
     color: saddlebrown;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 96px;
+}
+
+.text {
+    color: saddlebrown;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    opacity: 0.75;
 }
