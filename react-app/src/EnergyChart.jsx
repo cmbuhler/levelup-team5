@@ -96,7 +96,7 @@ class EnergyChart extends Component {
                     data: this.state.danceability
                 }
             ]
-        };
+        }; 
         return data
     }
 
