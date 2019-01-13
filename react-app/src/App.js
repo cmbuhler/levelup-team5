@@ -4,15 +4,15 @@ import './App.css';
 import TitleComponent from './TitleComponent';
 import EnergyChart from './EnergyChart';
 import Search from './Search';
+import MovieCard from './containers/MovieCard';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-        <TitleComponent/>
-        </header>
-        <EnergyChart/>
+        <p className = "text">Song Intensities</p>
+        <MovieCard/>
+        <MovieCard/>
       </div>
     );
   }
