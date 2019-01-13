@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import './TitleComponent.css'
 
 class TitleComponent extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
     }
 
     makeTitleCallBasedOnSearch() {
@@ -13,8 +13,7 @@ class TitleComponent extends Component {
     render() {
         return (
             <div>
-                <p className = "text">Song Intensities</p>
-                <p className = "text">Harry Potter and the Sorcerer's Stone</p>
+                <p className = "text">{this.props.children}</p>
             </div>
         )
     }
